@@ -15,4 +15,8 @@ export class EmployeesService {
     getEmployee(id: number) {
         return this.employees[id];
     }
+
+    setEmployee(id: number, employee: {name: string, age:number, charge: string, state: string}) {
+        this.employees[id] = employee;
+    }
 }

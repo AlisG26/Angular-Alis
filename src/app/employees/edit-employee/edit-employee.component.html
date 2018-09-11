@@ -1,3 +1,27 @@
-<p>
-  edit-employee works!
-</p>
+<div class="list-group">
+  <div class="list-group-item">
+    <label>Nombre Empleado</label>
+    <input type="text" [(NgModel)]="name" class="form-control">
+  </div>
+  <div class="list-group-item">
+      <label>Edad Empleado</label>
+      <input type="text" [(NgModel)]="name" class="form-control">
+    </div>
+    <div class="list-group-item">
+        <label>Cargo</label>
+        <select [(NgModel)]="charge" class="form-control">
+        <option value="Engineer">Engineer</option>
+        <option value="Secretary">Secretary</option>
+        <option value="Manager">Manager</option>
+      </select>
+      </div>
+      <div class="list-group-item">
+        <label>Estado</label>
+          <select [(NgModel)]="state" class="form-control">
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+           </select>
+        </div>
+</div>
+<hr>
+<button class="btn btn-primary" (click)="saveChanges()">Guardar Cambios</button>
