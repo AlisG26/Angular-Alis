@@ -32,7 +32,7 @@ export class EditEmployeeComponent implements OnInit {
       charge: this.charge,
       state: this.state
     });
-    this.router.navigate(['../'])
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
 }

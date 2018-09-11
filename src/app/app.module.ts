@@ -9,10 +9,14 @@ import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeComponent } from './employees/employee/employee.component';
 import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
 import { EmployeesService } from './services/employees.service'
+import { AuthGuard } from './services/auth.guard.service';
+import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'employees', component: EmployeesComponent,
+    {path: 'employees',
+    canActivate: [AuthGuard],
+     component: EmployeesComponent,
     children: [
       {path: ':id', component: EmployeeComponent},
       {path: ':id/edit', component: EditEmployeeComponent}
@@ -34,7 +38,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EmployeesService],
-  bootstrap: [AppComponent]
+  providers: [EmployeesService, AuthGuard, AuthService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
