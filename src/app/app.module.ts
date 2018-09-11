@@ -7,10 +7,16 @@ import { HomeComponent } from './home/home.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeComponent } from './employees/employee/employee.component';
 import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
+import { EmployeesService } from './services/employees.service'
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'employees', component: EmployeesComponent},
+    {path: '', component: HomeComponent},
+    {path: 'employees', component: EmployeesComponent,
+    children: [
+      {path: ':id', component: EmployeeComponent},
+      {path: ':id/edit', component: EditEmployeeComponent}
+    ]
+  }
 ];
 
 @NgModule({
@@ -19,13 +25,14 @@ const appRoutes: Routes = [
     HomeComponent,
     EmployeesComponent,
     EmployeeComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
   ],
+
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [EmployeesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
